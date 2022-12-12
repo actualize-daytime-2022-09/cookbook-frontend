@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { RecipesIndex } from "./RecipesIndex";
 import { RecipesNew } from "./RecipesNew";
 import { Modal } from "./Modal";
+import { RecipesShow } from "./RecipesShow";
 
 export function Home() {
   const [recipes, setRecipes] = useState([]);
@@ -32,11 +33,7 @@ export function Home() {
       {/* <button onClick={handleShowRecipe}>Gimme a modal!!</button> */}
 
       <Modal show={isRecipesShowVisible} onClose={handleHideRecipe}>
-        <h2>{currentRecipe.title}</h2>
-        <p>Chef: {currentRecipe.chef}</p>
-        <p>Ingredients: {currentRecipe.ingredients}</p>
-        <p>Directions: {currentRecipe.directions}</p>
-        <p>Prep time: {currentRecipe.prep_time}</p>
+        <RecipesShow recipe={currentRecipe}/>
       </Modal>
 
       <RecipesNew />

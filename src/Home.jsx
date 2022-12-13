@@ -29,9 +29,7 @@ export function Home() {
   useEffect(handleIndexRecipes, []);
 
   return (
-    <div>
-      {/* <button onClick={handleShowRecipe}>Gimme a modal!!</button> */}
-
+    <div className="container">
       <Modal show={isRecipesShowVisible} onClose={handleHideRecipe}>
         <RecipesShow recipe={currentRecipe}/>
       </Modal>

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { RecipesIndex } from "./RecipesIndex";
 import { RecipesNew } from "./RecipesNew";
+import { Signup } from "./Signup";
 import { Modal } from "./Modal";
 import { RecipesShow } from "./RecipesShow";
 
@@ -30,6 +31,7 @@ export function Home() {
 
   return (
     <div className="container">
+      <Signup />
       <Modal show={isRecipesShowVisible} onClose={handleHideRecipe}>
         <RecipesShow recipe={currentRecipe}/>
       </Modal>

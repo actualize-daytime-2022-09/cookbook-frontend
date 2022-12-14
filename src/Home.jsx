@@ -34,6 +34,7 @@ export function Home() {
       <Signup />
       <Modal show={isRecipesShowVisible} onClose={handleHideRecipe}>
         <RecipesShow recipe={currentRecipe}/>
+        
       </Modal>
 
       <RecipesNew />

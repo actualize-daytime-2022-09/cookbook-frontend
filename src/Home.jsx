@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { RecipesIndex } from "./RecipesIndex";
 import { RecipesNew } from "./RecipesNew";
 import { Signup } from "./Signup";
+import { Login } from "./Login";
+import { LogoutLink } from "./LogoutLink";
 import { Modal } from "./Modal";
 import { RecipesShow } from "./RecipesShow";
 
@@ -32,6 +34,8 @@ export function Home() {
   return (
     <div className="container">
       <Signup />
+      <Login />
+      <LogoutLink />
       <Modal show={isRecipesShowVisible} onClose={handleHideRecipe}>
         <RecipesShow recipe={currentRecipe}/>
         

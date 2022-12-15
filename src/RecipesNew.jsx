@@ -1,20 +1,14 @@
-import axios from "axios";
-
 export function RecipesNew(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("makin a recipe!");
     const params = new FormData(event.target);
-    axios
-      .post("http://localhost:3000/recipes.json", params)
-      .then((response) => {
-        console.log(response.data);
-        event.target.reset();
-      });
-  }
-
-  return (
-    <div id="recipes-new">
+    console.log("handleSubmit", params);
+    props.onRecipeCreate(params)
+    event.target.reset();
+  };
+      
+      return (
+        <div id="recipes-new">
       <h1>New Recipe</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -33,10 +27,11 @@ export function RecipesNew(props) {
           directions: <input name="directions" type="text" />
         </div>
         <div>
-          Put in a picture: <input name="image" type="text" />
+          Put in a picture: <input name="image_url" type="text" />
         </div>
         <button type="submit">Create recipe</button>
       </form>
     </div>
   );
 }
+

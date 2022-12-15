@@ -29,6 +29,12 @@ export function Home() {
     setIsRecipesShowVisible(false);
   }
 
+  const handleCreateRecipe = (params) => {
+    axios.post("http://localhost:3000/recipes.json", params).then((response) => {
+      setRecipes([...recipes, response.data])
+    });
+  }
+
   useEffect(handleIndexRecipes, []);
 
   return (
@@ -41,7 +47,7 @@ export function Home() {
         
       </Modal>
 
-      <RecipesNew />
+      <RecipesNew onRecipeCreate={handleCreateRecipe} />
       <RecipesIndex recipes={recipes} onSelectRecipe={handleShowRecipe} />
     </div>
   );

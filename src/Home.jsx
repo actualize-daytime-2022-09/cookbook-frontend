@@ -62,15 +62,23 @@ export function Home() {
 
   return (
     <div className="container">
-      <Signup />
-      <Login />
-      <LogoutLink />
+      <div className="row">
+        <div className="col-4">
+          <Signup />
+        </div>
+        <div className="col-4">
+          <Login />
+          <LogoutLink />
+        </div>
+        <div className="col-4">
+          <RecipesNew onRecipeCreate={handleCreateRecipe} />
+        </div>
+      </div>
       <Modal show={isRecipesShowVisible} onClose={handleHideRecipe}>
         <RecipesShow recipe={currentRecipe} onRecipeUpdate={handleUpdateRecipe} onRecipeDestroy={handleDestroyRecipe}/>
         
       </Modal>
 
-      <RecipesNew onRecipeCreate={handleCreateRecipe} />
       <RecipesIndex recipes={recipes} onSelectRecipe={handleShowRecipe} />
     </div>
   );

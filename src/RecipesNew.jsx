@@ -12,22 +12,22 @@ export function RecipesNew(props) {
       <h1>New Recipe</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          What it called?: <input name="title" type="text" />
+          What it called?: <input className="form-control" name="title" type="text" />
         </div>
         <div>
-          chef: <input name="chef" type="text" />
+          chef: <input className="form-control" name="chef" type="text" />
         </div>
         <div>
-          How long???: <input name="prep_time" type="text" />
+          How long???: <input className="form-control" name="prep_time" type="text" />
         </div>
         <div>
-          What go in?: <input name="ingredients" type="text" />
+          What go in?: <input className="form-control" name="ingredients" type="text" />
         </div>
         <div>
-          directions: <input name="directions" type="text" />
+          directions: <input className="form-control" name="directions" type="text" />
         </div>
         <div>
-          Put in a picture: <input name="image_url" type="text" />
+          Put in a picture: <input className="form-control" name="image_url" type="text" />
         </div>
         <button type="submit">Create recipe</button>
       </form>

@@ -7,6 +7,10 @@ export function RecipesShow(props) {
     event.target.reset();
   }
 
+  const handleClick = () => {
+    props.onRecipeDestroy(props.recipe);
+  }
+
   return (
     <div id="recipes-show">
         <h2>{props.recipe.title}</h2>
@@ -23,8 +27,9 @@ export function RecipesShow(props) {
           <div>directions: <input defaultValue={props.recipe.directions} name="directions" type="text" /></div>
           <div>prep_time: <input defaultValue={props.recipe.prep_time} name="prep_time" type="text" /></div>
           <div>image_url: <input defaultValue={props.recipe.image_url} name="image_url" type="text" /></div>
-          <button type="submit">Update</button>
+          <button type="submit">Update</button> 
         </form>
+        <button onClick={handleClick}>Delete!</button>
     </div>
   )
 }

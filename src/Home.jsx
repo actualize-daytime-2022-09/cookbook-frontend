@@ -50,6 +50,14 @@ export function Home() {
     })
   }
 
+  const handleDestroyRecipe = (recipe) => {
+    console.log(recipe)
+    axios.delete(`http://localhost:3000/recipes/${recipe.id}.json`).then((response) => {
+      setRecipes(recipes.filter((p) => p.id !== recipe.id));
+      handleHideRecipe();
+    });
+  }
+
   useEffect(handleIndexRecipes, []);
 
   return (
@@ -58,7 +66,7 @@ export function Home() {
       <Login />
       <LogoutLink />
       <Modal show={isRecipesShowVisible} onClose={handleHideRecipe}>
-        <RecipesShow recipe={currentRecipe} onRecipeUpdate={handleUpdateRecipe}/>
+        <RecipesShow recipe={currentRecipe} onRecipeUpdate={handleUpdateRecipe} onRecipeDestroy={handleDestroyRecipe}/>
         
       </Modal>
 

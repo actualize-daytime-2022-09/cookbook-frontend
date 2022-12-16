@@ -45,7 +45,8 @@ export function Home() {
             return recipe;
           }
         })
-      )
+      );
+      handleHideRecipe();
     })
   }
 

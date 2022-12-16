@@ -25,14 +25,7 @@ export function RecipesIndex(props) {
           </div>
         </div>
 
-            {props.recipes.map((recipe) => (
-              <div key={recipe.id} className="recipes">
-                <h2>{recipe.title}</h2>
-                <h4>{recipe.chef}</h4>
-                <img src={recipe.image_url} alt="" />
-                <button className="btn btn-info" onClick={ () => props.onSelectRecipe(recipe) }>MORE INFO</button>
-              </div>
-            ))}
+          
       </div>
     </div>
   );

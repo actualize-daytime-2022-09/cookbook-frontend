@@ -1,4 +1,19 @@
+import { Link } from "react-router-dom";
+import { Modal } from "./Modal";
+import { Signup } from "./Signup"
+import { useState } from "react";
+
 export function Header() {
+  const [isSignupVisible, setIsSignupVisible] = useState(false)
+
+  const handleSignupShow = () => {
+    setIsSignupVisible(true);
+  }
+
+  const handleSignupClose = () => {
+    setIsSignupVisible(false);
+  }
+
   return (
     <div>
       <header>
@@ -11,7 +26,15 @@ export function Header() {
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page" href="#">Home</a>
+                  <Link to="/">Home</Link>
+                </li>
+                |
+                <li className="nav-item">
+                  <Link to="/about">About</Link>
+                </li>
+                |
+                <li className="nav-item">
+                  <a onClick={ handleSignupShow } href="#">Signup</a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#recipes-index">All Recipes</a>
@@ -31,7 +54,12 @@ export function Header() {
             </div>
           </div>
         </nav>
+
+      <Modal show={isSignupVisible} onClose={handleSignupClose}>
+        < Signup />
+      </Modal>
       </header>
+      
     </div>
   );
 }

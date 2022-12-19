@@ -1,10 +1,13 @@
+import axios from "axios";
 import { Link } from "react-router-dom";
 import { Modal } from "./Modal";
 import { Signup } from "./Signup"
+import { Login } from "./Login"
 import { useState } from "react";
 
 export function Header() {
   const [isSignupVisible, setIsSignupVisible] = useState(false)
+  const [isLoginVisible, setIsLoginVisible] = useState(false)
 
   const handleSignupShow = () => {
     setIsSignupVisible(true);
@@ -13,6 +16,21 @@ export function Header() {
   const handleSignupClose = () => {
     setIsSignupVisible(false);
   }
+
+  const handleLoginShow = () => {
+    setIsLoginVisible(true);
+  }
+
+  const handleLoginClose = () => {
+    setIsLoginVisible(false);
+  }
+
+  const handleLogout = (event) => {
+    event.preventDefault();
+    delete axios.defaults.headers.common["Authorization"];
+    localStorage.removeItem("jwt");
+    window.location.href = "/";
+  };
 
   return (
     <div>
@@ -36,13 +54,23 @@ export function Header() {
                 <li className="nav-item">
                   <a onClick={ handleSignupShow } href="#">Signup</a>
                 </li>
+                |
+                <li className="nav-item">
+                  <a onClick={ handleLoginShow } href="#">Login</a>
+                </li>
+                |
+                <li className="nav-item">
+                  <a onClick={ handleLogout } href="#">Logout</a>
+                </li>
+                |
                 <li className="nav-item">
                   <a className="nav-link" href="#recipes-index">All Recipes</a>
                 </li>
+                |
                 <li className="nav-item">
                   <a className="nav-link" href="/recipes/new">New Recipes</a>
                 </li>
-
+                |
                 <li className="nav-item">
                   <a className="nav-link disabled">Super secret</a>
                 </li>
@@ -57,6 +85,10 @@ export function Header() {
 
       <Modal show={isSignupVisible} onClose={handleSignupClose}>
         < Signup />
+      </Modal>
+
+      <Modal show={isLoginVisible} onClose={handleLoginClose}>
+        < Login />
       </Modal>
       </header>
       

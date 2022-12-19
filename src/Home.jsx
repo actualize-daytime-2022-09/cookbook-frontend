@@ -29,8 +29,6 @@ export function Home() {
     setIsRecipesShowVisible(false);
   }
 
-
-
   const handleUpdateRecipe = (id, params) => {
     axios.patch(`http://localhost:3000/recipes/${id}.json`, params).then((response) => {
       setRecipes(
@@ -58,20 +56,8 @@ export function Home() {
 
   return (
     <div className="container">
-      <div className="row">
-        {/* <div className="col-4">
-          <Signup />
-        </div> */}
-        <div className="col-6">
-          <Login />
-          <LogoutLink />
-        </div>
-
-      </div>
-
       <Modal show={isRecipesShowVisible} onClose={handleHideRecipe}>
-        <RecipesShow recipe={currentRecipe} onRecipeUpdate={handleUpdateRecipe} onRecipeDestroy={handleDestroyRecipe}/>
-        
+        <RecipesShow recipe={currentRecipe} onRecipeUpdate={handleUpdateRecipe} onRecipeDestroy={handleDestroyRecipe}/>       
       </Modal>
 
       <RecipesIndex recipes={recipes} onSelectRecipe={handleShowRecipe} />

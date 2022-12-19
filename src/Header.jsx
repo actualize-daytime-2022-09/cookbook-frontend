@@ -40,7 +40,7 @@ export function Header() {
                   <a className="nav-link" href="#recipes-index">All Recipes</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#recipes-new">New Recipes</a>
+                  <a className="nav-link" href="/recipes/new">New Recipes</a>
                 </li>
 
                 <li className="nav-item">

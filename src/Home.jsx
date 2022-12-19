@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { RecipesIndex } from "./RecipesIndex";
-import { RecipesNew } from "./RecipesNew";
+
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
@@ -29,11 +29,7 @@ export function Home() {
     setIsRecipesShowVisible(false);
   }
 
-  const handleCreateRecipe = (params) => {
-    axios.post("http://localhost:3000/recipes.json", params).then((response) => {
-      setRecipes([...recipes, response.data])
-    });
-  }
+
 
   const handleUpdateRecipe = (id, params) => {
     axios.patch(`http://localhost:3000/recipes/${id}.json`, params).then((response) => {
@@ -70,9 +66,7 @@ export function Home() {
           <Login />
           <LogoutLink />
         </div>
-        <div className="col-6">
-          <RecipesNew onRecipeCreate={handleCreateRecipe} />
-        </div>
+
       </div>
 
       <Modal show={isRecipesShowVisible} onClose={handleHideRecipe}>

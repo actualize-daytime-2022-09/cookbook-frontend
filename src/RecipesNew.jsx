@@ -1,9 +1,18 @@
+import axios from "axios";
+
 export function RecipesNew(props) {
+  const handleCreateRecipe = (params) => {
+    axios.post("http://localhost:3000/recipes.json", params).then((response) => {
+      console.log(response, "Creating a recipe!")
+      window.location.href = "/";
+    });
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
-    console.log("handleSubmit", params);
-    props.onRecipeCreate(params)
+    console.log("handleSubmit new recipe");
+    handleCreateRecipe(params)
     event.target.reset();
   };
       

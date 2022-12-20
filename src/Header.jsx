@@ -8,29 +8,50 @@ import { useState } from "react";
 export function Header() {
   const [isSignupVisible, setIsSignupVisible] = useState(false)
   const [isLoginVisible, setIsLoginVisible] = useState(false)
-
+  
   const handleSignupShow = () => {
     setIsSignupVisible(true);
   }
-
+  
   const handleSignupClose = () => {
     setIsSignupVisible(false);
   }
-
+  
   const handleLoginShow = () => {
     setIsLoginVisible(true);
   }
-
+  
   const handleLoginClose = () => {
     setIsLoginVisible(false);
   }
-
+  
   const handleLogout = (event) => {
     event.preventDefault();
     delete axios.defaults.headers.common["Authorization"];
     localStorage.removeItem("jwt");
     window.location.href = "/";
   };
+  
+  let authenticationLinks;
+  if (localStorage.jwt === undefined) {
+    authenticationLinks = (
+      <>
+        <li className="nav-item">
+        <a onClick={ handleSignupShow } href="#">Signup</a>
+        </li>
+        |
+        <li className="nav-item">
+          <a onClick={ handleLoginShow } href="#">Login</a>
+        </li>
+      </>
+    )
+  } else {
+    authenticationLinks = (
+      <li className="nav-item">
+        <a onClick={ handleLogout } href="#">Logout</a>
+      </li>
+    )
+  }
 
   return (
     <div>
@@ -51,17 +72,7 @@ export function Header() {
                   <Link to="/about">About</Link>
                 </li>
                 |
-                <li className="nav-item">
-                  <a onClick={ handleSignupShow } href="#">Signup</a>
-                </li>
-                |
-                <li className="nav-item">
-                  <a onClick={ handleLoginShow } href="#">Login</a>
-                </li>
-                |
-                <li className="nav-item">
-                  <a onClick={ handleLogout } href="#">Logout</a>
-                </li>
+                {authenticationLinks}
                 |
                 <li className="nav-item">
                   <a className="nav-link" href="#recipes-index">All Recipes</a>

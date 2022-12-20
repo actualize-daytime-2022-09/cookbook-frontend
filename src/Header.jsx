@@ -31,27 +31,7 @@ export function Header() {
     localStorage.removeItem("jwt");
     window.location.href = "/";
   };
-  
-  let authenticationLinks;
-  if (localStorage.jwt === undefined) {
-    authenticationLinks = (
-      <>
-        <li className="nav-item">
-        <a onClick={ handleSignupShow } href="#">Signup</a>
-        </li>
-        |
-        <li className="nav-item">
-          <a onClick={ handleLoginShow } href="#">Login</a>
-        </li>
-      </>
-    )
-  } else {
-    authenticationLinks = (
-      <li className="nav-item">
-        <a onClick={ handleLogout } href="#">Logout</a>
-      </li>
-    )
-  }
+   
 
   return (
     <div>
@@ -72,7 +52,20 @@ export function Header() {
                   <Link to="/about">About</Link>
                 </li>
                 |
-                {authenticationLinks}
+                {localStorage.jwt === undefined ? 
+                <>
+                  <li className="nav-item">
+                  <a onClick={ handleSignupShow } href="#">Signup</a>
+                  </li>
+                  |
+                  <li className="nav-item">
+                    <a onClick={ handleLoginShow } href="#">Login</a>
+                  </li>
+                </> :
+                <li className="nav-item">
+                  <a onClick={ handleLogout } href="#">Logout</a>
+                </li>
+                } 
                 |
                 <li className="nav-item">
                   <a className="nav-link" href="#recipes-index">All Recipes</a>
